@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AddressBook
@@ -25,6 +26,8 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
      */
     private $firstName;
 
@@ -32,6 +35,8 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
      */
     private $lastName;
 
@@ -39,6 +44,7 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="streetAndNumber", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $streetAndNumber;
 
@@ -46,6 +52,7 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="zip", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $zip;
 
@@ -53,6 +60,7 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $city;
 
@@ -60,6 +68,8 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Country
      */
     private $country;
 
@@ -67,13 +77,16 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="phoneNumber", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $phoneNumber;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="datetime")
+     * @ORM\Column(name="birthday", type="date")
+     * @Assert\NotBlank
+     * @Assert\Date
      */
     private $birthday;
 
@@ -81,6 +94,8 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
@@ -88,258 +103,198 @@ class AddressBook
      * @var string
      *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @Assert\Image
      */
     private $picture;
 
-
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     *
-     * @return AddressBook
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
 
     /**
-     * Get firstName
-     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
 
     /**
-     * Set lastName
-     *
-     * @param string $lastName
-     *
+     * @param string $firstName
      * @return AddressBook
      */
-    public function setLastName($lastName)
+    public function setFirstName(string $firstName): AddressBook
     {
-        $this->lastName = $lastName;
-
+        $this->firstName = $firstName;
         return $this;
     }
 
     /**
-     * Get lastName
-     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
     /**
-     * Set streetAndNumber
-     *
-     * @param string $streetAndNumber
-     *
+     * @param string $lastName
      * @return AddressBook
      */
-    public function setStreetAndNumber($streetAndNumber)
+    public function setLastName(string $lastName): AddressBook
     {
-        $this->streetAndNumber = $streetAndNumber;
-
+        $this->lastName = $lastName;
         return $this;
     }
 
     /**
-     * Get streetAndNumber
-     *
      * @return string
      */
-    public function getStreetAndNumber()
+    public function getStreetAndNumber(): string
     {
         return $this->streetAndNumber;
     }
 
     /**
-     * Set zip
-     *
-     * @param string $zip
-     *
+     * @param string $streetAndNumber
      * @return AddressBook
      */
-    public function setZip($zip)
+    public function setStreetAndNumber(string $streetAndNumber): AddressBook
     {
-        $this->zip = $zip;
-
+        $this->streetAndNumber = $streetAndNumber;
         return $this;
     }
 
     /**
-     * Get zip
-     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): string
     {
         return $this->zip;
     }
 
     /**
-     * Set city
-     *
-     * @param string $city
-     *
+     * @param string $zip
      * @return AddressBook
      */
-    public function setCity($city)
+    public function setZip(string $zip): AddressBook
     {
-        $this->city = $city;
-
+        $this->zip = $zip;
         return $this;
     }
 
     /**
-     * Get city
-     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
 
     /**
-     * Set country
-     *
-     * @param string $country
-     *
+     * @param string $city
      * @return AddressBook
      */
-    public function setCountry($country)
+    public function setCity(string $city): AddressBook
     {
-        $this->country = $country;
-
+        $this->city = $city;
         return $this;
     }
 
     /**
-     * Get country
-     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->country;
     }
 
     /**
-     * Set phoneNumber
-     *
-     * @param string $phoneNumber
-     *
+     * @param string $country
      * @return AddressBook
      */
-    public function setPhoneNumber($phoneNumber)
+    public function setCountry(string $country): AddressBook
     {
-        $this->phoneNumber = $phoneNumber;
-
+        $this->country = $country;
         return $this;
     }
 
     /**
-     * Get phoneNumber
-     *
      * @return string
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): string
     {
         return $this->phoneNumber;
     }
 
     /**
-     * Set birthday
-     *
-     * @param \DateTime $birthday
-     *
+     * @param string $phoneNumber
      * @return AddressBook
      */
-    public function setBirthday($birthday)
+    public function setPhoneNumber(string $phoneNumber): AddressBook
     {
-        $this->birthday = $birthday;
-
+        $this->phoneNumber = $phoneNumber;
         return $this;
     }
 
     /**
-     * Get birthday
-     *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getBirthday()
+    public function getBirthday(): \DateTimeInterface
     {
         return $this->birthday;
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
+     * @param \DateTimeInterface $birthday
      * @return AddressBook
      */
-    public function setEmail($email)
+    public function setBirthday(\DateTimeInterface $birthday): AddressBook
     {
-        $this->email = $email;
-
+        $this->birthday = $birthday;
         return $this;
     }
 
     /**
-     * Get email
-     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * Set picture
-     *
-     * @param string $picture
-     *
+     * @param string $email
      * @return AddressBook
      */
-    public function setPicture($picture)
+    public function setEmail(string $email): AddressBook
     {
-        $this->picture = $picture;
-
+        $this->email = $email;
         return $this;
     }
 
     /**
-     * Get picture
-     *
      * @return string
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
+
+    /**
+     * @param string $picture
+     * @return AddressBook
+     */
+    public function setPicture(string $picture): AddressBook
+    {
+        $this->picture = $picture;
+        return $this;
+    }
+    
 }
 
