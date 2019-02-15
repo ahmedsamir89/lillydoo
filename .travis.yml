@@ -6,6 +6,7 @@ install:
 before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
+  - sudo -E su $USER -c 'mkdir ./var/data'
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - cp phpunit.xml.dist phpunit.xml
