@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="address_book")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressBookRepository")
+ * @UniqueEntity("email")
  */
 class AddressBook
 {
@@ -96,6 +98,7 @@ class AddressBook
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      * @Assert\NotBlank
      * @Assert\Email
+     *
      */
     private $email;
 
@@ -114,12 +117,12 @@ class AddressBook
     {
         return $this->id;
     }
-
+    
 
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
@@ -137,7 +140,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -155,7 +158,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getStreetAndNumber(): string
+    public function getStreetAndNumber()
     {
         return $this->streetAndNumber;
     }
@@ -173,7 +176,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getZip(): string
+    public function getZip()
     {
         return $this->zip;
     }
@@ -191,7 +194,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity()
     {
         return $this->city;
     }
@@ -209,7 +212,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getCountry(): string
+    public function getCountry()
     {
         return $this->country;
     }
@@ -227,7 +230,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber()
     {
         return $this->phoneNumber;
     }
@@ -245,7 +248,7 @@ class AddressBook
     /**
      * @return \DateTimeInterface
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getBirthday()
     {
         return $this->birthday;
     }
@@ -263,7 +266,7 @@ class AddressBook
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -281,16 +284,16 @@ class AddressBook
     /**
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture()
     {
         return $this->picture;
     }
 
     /**
-     * @param string $picture
+     * @param $picture
      * @return AddressBook
      */
-    public function setPicture(string $picture): AddressBook
+    public function setPicture($picture): AddressBook
     {
         $this->picture = $picture;
         return $this;
