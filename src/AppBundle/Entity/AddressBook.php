@@ -80,6 +80,7 @@ class AddressBook
      *
      * @ORM\Column(name="phoneNumber", type="string", length=255)
      * @Assert\NotBlank
+     * @Assert\Regex("/^[0-9]*$/")
      */
     private $phoneNumber;
 

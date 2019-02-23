@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,7 @@ class AddressBookType extends AbstractType
             ->add('zip', TextType::class)
             ->add('city', TextType::class)
             ->add('country', CountryType::class)
-            ->add('phoneNumber', TextType::class)
+            ->add('phoneNumber', TelType::class)
             ->add('birthday', BirthdayType::class)
             ->add('email', EmailType::class)
             ->add('picture', FileType::class, ['required' => false, 'data_class' => null])
