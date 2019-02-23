@@ -6,8 +6,6 @@ namespace Tests\AppBundle\Form;
 use AppBundle\Entity\AddressBook;
 use AppBundle\Form\AddressBookType;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Intl\Intl;
 
 class AddressBookTypeTest extends TypeTestCase
 {
