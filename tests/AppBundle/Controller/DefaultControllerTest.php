@@ -8,7 +8,7 @@ class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
     {
-        $this->markTestSkipped();
+//        $this->markTestSkipped();
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
@@ -17,6 +17,23 @@ class DefaultControllerTest extends WebTestCase
         $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
     }
 
+    public function testNewAction()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/new');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertCount(1, $crawler->filter('#address_book_firstName'));
+        $this->assertCount(1, $crawler->filter('#address_book_lastName'));
+        $this->assertCount(1, $crawler->filter('#address_book_country'));
+        $this->assertCount(1, $crawler->filter('#address_book_zip'));
+        $this->assertCount(1, $crawler->filter('#address_book_birthday'));
+        $this->assertCount(1, $crawler->filter('#address_book_city'));
+        $this->assertCount(1, $crawler->filter('#address_book_streetAndNumber'));
+        $this->assertCount(1, $crawler->filter('#address_book_email'));
+        $this->assertCount(1, $crawler->filter('#address_book_picture'));
+    }
 
     public function test404Page()
     {
